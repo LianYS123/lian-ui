@@ -1,0 +1,13 @@
+.text-item-wrapper {
+  :global {
+    + & {
+      margin-top: 16px;
+    }
+    .label-col {
+      text-align: right;
+      .label {
+        margin-right: 8px;
+      }
+    }
+  }
+}
