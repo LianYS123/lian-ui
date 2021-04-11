@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Row, Col } from 'antd';
 import { UpOutlined, DownOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
-import styles from './styles.module.scss';
+import './styles.less';
 
 // 可展开的信息展示
 export const CloseableBox = ({
@@ -15,7 +15,7 @@ export const CloseableBox = ({
   const [visable, setVisable] = useState(true);
   return (
     <div
-      className={classNames(className, styles['closeable-box-wrapper'], {
+      className={classNames(className, 'lianui-closeable-box', {
         underline
       })}
       style={style}

@@ -4,11 +4,10 @@ import { Tabs } from 'antd';
 
 import 'antd/dist/antd.css';
 import 'lian-ui/dist/index.css';
-import './index.css';
 
 const { TabPane } = Tabs;
 
-export default () => {
+const App = () => {
   return (
     <div style={{ margin: 20 }}>
       <Tabs>
@@ -23,3 +22,4 @@ export default () => {
     </div>
   );
 };
+export default App;

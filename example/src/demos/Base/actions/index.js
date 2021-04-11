@@ -1,5 +1,5 @@
-import { mount, resolveResult } from 'utils/actions';
-import BaseForm from './BaseForm';
+import { mount, resolveResult } from 'utils';
+import { BaseForm } from './BaseForm';
 import { Modal } from 'antd';
 const delay = (t) => new Promise((resolve) => setTimeout(resolve, t));
 const fakeUpdate = async (values) => {
@@ -11,7 +11,7 @@ const fakeDelete = async (values) => {
   console.log('delete', values);
 };
 
-export default {
+const actions = {
   edit: (options) => {
     mount(BaseForm, {
       options,
@@ -33,3 +33,5 @@ export default {
     });
   }
 };
+
+export default actions;

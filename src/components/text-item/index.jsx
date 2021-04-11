@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import styles from './styles.module.sass';
+import './styles.module.less';
 import classNames from 'classnames';
 
 export const TextItem = ({
@@ -13,10 +13,7 @@ export const TextItem = ({
   className
 }) => {
   return (
-    <Row
-      className={classNames(styles['text-item-wrapper'], className)}
-      style={style}
-    >
+    <Row className={classNames('text-item', className)} style={style}>
       <Col className='label' {...labelCol}>
         <span>
           {label}

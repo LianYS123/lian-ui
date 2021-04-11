@@ -21,17 +21,15 @@ export const resolveResult = async ({
 };
 
 // 自定义表单
-export function mount(
+export function mount({
   CustomForm,
-  {
-    options,
-    method,
-    message,
-    mounter = modalMounter,
-    onSubmit = resolveResult,
-    ...wrapperProps
-  }
-) {
+  options,
+  method,
+  message,
+  mounter = modalMounter,
+  onSubmit = resolveResult,
+  ...wrapperProps
+}) {
   const { reload, record } = options;
   Object.assign(wrapperProps, { visible: true, onCancel: mounter.close });
   const content = (
