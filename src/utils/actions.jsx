@@ -1,5 +1,5 @@
 import React from 'react';
-import { notification } from 'antd';
+import { notification, Modal } from 'antd';
 import { modalMounter } from './mounter';
 
 // 结果处理器
@@ -18,31 +18,83 @@ export const resolveResult = async ({
       reload();
     }
   }
+  return res;
+};
+
+export const mount = ({
+  CustomForm,
+  options,
+  mounter = modalMounter,
+  ...wrapperProps
+}) => {
+  const { record } = options;
+  const { open, close } = mounter;
+  const content = (
+    <CustomForm
+      wrapperProps={{
+        ...wrapperProps,
+        visible: true,
+        onClose: close,
+        onCancel: close
+      }}
+      initialValues={record}
+      {...options}
+      close={close}
+    />
+  );
+  open(content);
 };
 
 // 自定义表单
-export function mount(
+export function mountForm({
   CustomForm,
-  {
-    options,
-    method,
-    message,
-    mounter = modalMounter,
-    onSubmit = resolveResult,
-    ...wrapperProps
-  }
-) {
+  options,
+  method,
+  message,
+  mounter = modalMounter,
+  onSubmit = resolveResult,
+  ...wrapperProps
+}) {
   const { reload, record } = options;
-  Object.assign(wrapperProps, { visible: true, onCancel: mounter.close });
+  const { open, close } = mounter;
   const content = (
     <CustomForm
-      wrapperProps={wrapperProps}
+      wrapperProps={{
+        ...wrapperProps,
+        visible: true,
+        onClose: close,
+        onCancel: close
+      }}
       initialValues={record}
       {...options}
-      onSubmit={(params) => onSubmit({ method, message, reload, params })}
-      close={mounter.close}
+      method={
+        onSubmit
+          ? (params) => onSubmit({ method, message, reload, params })
+          : method
+      }
+      close={close}
     />
   );
 
-  mounter.open(content);
+  open(content);
 }
+
+export const confirmAction = ({
+  method,
+  reload,
+  message,
+  params,
+  onSubmit = resolveResult,
+  ...modalProps
+}) => {
+  Modal.confirm({
+    ...modalProps,
+    onOk: () =>
+      onSubmit({
+        method,
+        reload,
+        message,
+        params
+      })
+  });
+};

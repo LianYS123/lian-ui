@@ -40,6 +40,7 @@
     "eslint-plugin-node": "^11.1.0",
     "gh-pages": "^2.2.0",
     "less": "^4.1.1",
+    "lian-hooks": "^1.0.0",
     "microbundle": "^0.13.0",
     "node-sass": "^5.0.0",
     "npm-run-all": "^4.1.5",

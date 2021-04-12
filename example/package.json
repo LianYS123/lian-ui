@@ -15,6 +15,7 @@
     "react-scripts": "file:../node_modules/react-scripts",
     "antd": "file:../node_modules/antd",
     "classnames": "file:../node_modules/classnames",
+    "lian-hooks": "file:../node_modules/lian-hooks",
     "lian-ui": "file:.."
   },
   "eslintConfig": {

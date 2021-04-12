@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import './styles.module.less';
+import './styles.less';
 import classNames from 'classnames';
 
 export const TextItem = ({
@@ -13,15 +13,47 @@ export const TextItem = ({
   className
 }) => {
   return (
-    <Row className={classNames('text-item', className)} style={style}>
-      <Col className='label' {...labelCol}>
-        <span>
+    <Row className={classNames('lianui-text-item', className)} style={style}>
+      <Col className='lianui-text-item-label-col' {...labelCol}>
+        <span
+          className={classNames('lianui-text-item-label', {
+            'lianui-text-item-label-colon': colon
+          })}
+        >
           {label}
-          {colon && ':'}
         </span>
       </Col>
       <Col {...wrapperCol}>{children}</Col>
     </Row>
   );
 };
+
+export const TextItemGroup = ({
+  columns = [],
+  record = {},
+  className,
+  style,
+  ...rest
+}) => {
+  const fields = columns.map(({ title, dataIndex }) => {
+    return {
+      key: title,
+      label: title,
+      value: record[dataIndex]
+    };
+  });
+  return (
+    <div
+      className={classNames('lianui-text-item-group', className)}
+      style={style}
+    >
+      {fields.map((it, index) => (
+        <TextItem key={it.key || it.label} {...it} {...rest}>
+          {it.render ? it.render(it, index) : it.value}
+        </TextItem>
+      ))}
+    </div>
+  );
+};
+
 export default TextItem;

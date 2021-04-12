@@ -1,19 +1,12 @@
-import { mount, resolveResult } from 'utils';
+import { mountForm, confirmAction, mount, drawerMounter } from 'lian-ui';
 import { BaseForm } from './BaseForm';
-import { Modal } from 'antd';
-const delay = (t) => new Promise((resolve) => setTimeout(resolve, t));
-const fakeUpdate = async (values) => {
-  delay(1000);
-  console.log('update', values);
-};
-const fakeDelete = async (values) => {
-  delay(1000);
-  console.log('delete', values);
-};
+import { UserDetail } from './UserDetail';
+import { fakeDelete, fakeUpdate } from 'service';
 
 const actions = {
   edit: (options) => {
-    mount(BaseForm, {
+    mountForm({
+      CustomForm: BaseForm,
       options,
       title: '编辑',
       message: '操作成功',
@@ -21,15 +14,21 @@ const actions = {
     });
   },
   del: ({ reload, record }) => {
-    Modal.confirm({
+    confirmAction({
       title: '确认删除？',
-      onOk: () =>
-        resolveResult({
-          method: fakeDelete,
-          reload,
-          message: '删除成功',
-          params: { id: record.id }
-        })
+      method: fakeDelete,
+      reload,
+      message: '删除成功',
+      params: { id: record.id }
+    });
+  },
+  detail: (options) => {
+    mount({
+      title: '详情',
+      CustomForm: UserDetail,
+      width: 500,
+      options,
+      mounter: drawerMounter
     });
   }
 };
