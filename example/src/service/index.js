@@ -22,6 +22,14 @@ export const fakeUpdate = async (values) => {
   };
 };
 
+export const fakeAdd = async (values) => {
+  await delay(1000);
+  console.log('add', values);
+  return {
+    code: '0000'
+  };
+};
+
 export const fakeDelete = async (values) => {
   await delay(1000);
   console.log('delete', values);

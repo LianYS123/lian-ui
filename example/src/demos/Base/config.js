@@ -1,7 +1,6 @@
 import { TableCellControl } from 'lian-ui';
-import actions from './actions';
 
-export const getColumns = () => {
+export const getColumns = ({ actions } = {}) => {
   const columns = [
     {
       title: 'ID',
@@ -49,5 +48,5 @@ export const getColumns = () => {
 
 export const layout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 18 },
+  wrapperCol: { span: 18 }
 };

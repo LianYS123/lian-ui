@@ -3,11 +3,13 @@ import { Drawer } from 'antd';
 import { CloseableBox, TextItemGroup, ActionControl } from 'lian-ui';
 import { getColumns, layout } from '../config';
 
-export const UserDetail = ({ wrapperProps, record, close }) => {
+export const UserDetail = ({ record, close, ...rest }) => {
   const columns = getColumns().filter((it) => it.key !== 'opt');
   return (
     <Drawer
-      {...wrapperProps}
+      {...rest}
+      width={550}
+      onClose={close}
       footer={
         <ActionControl
           style={{ textAlign: 'right' }}
