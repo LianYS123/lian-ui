@@ -15,7 +15,7 @@ export const CloseableBox = ({
   const [visable, setVisable] = useState(true);
   return (
     <div
-      className={classNames(className, 'lianui-closeable-box', {
+      className={classNames(className, 'l-closeable-box', {
         underline
       })}
       style={style}

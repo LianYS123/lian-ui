@@ -13,11 +13,11 @@ export const TextItem = ({
   className
 }) => {
   return (
-    <Row className={classNames('lianui-text-item', className)} style={style}>
-      <Col className='lianui-text-item-label-col' {...labelCol}>
+    <Row className={classNames('l-text-item', className)} style={style}>
+      <Col className='l-text-item-label-col' {...labelCol}>
         <span
-          className={classNames('lianui-text-item-label', {
-            'lianui-text-item-label-colon': colon
+          className={classNames('l-text-item-label', {
+            'l-text-item-label-colon': colon
           })}
         >
           {label}
@@ -44,7 +44,7 @@ export const TextItemGroup = ({
   });
   return (
     <div
-      className={classNames('lianui-text-item-group', className)}
+      className={classNames('l-text-item-group', className)}
       style={style}
     >
       {fields.map((it, index) => (

@@ -40,7 +40,7 @@ export const Control = ({
 
 export const TableCellControl = ({ className, options = [], ...props }) => (
   <Control
-    className={classNames('lianui-table-cell-control', className)}
+    className={classNames('l-table-cell-control', className)}
     options={options.map((it) => ({ ...it, type: 'link' }))}
     {...props}
   />
@@ -48,7 +48,7 @@ export const TableCellControl = ({ className, options = [], ...props }) => (
 
 export const ActionControl = ({ className, ...props }) => (
   <Control
-    className={classNames('lianui-action-control', className)}
+    className={classNames('l-action-control', className)}
     {...props}
   />
 );
